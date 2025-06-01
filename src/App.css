@@ -18,7 +18,7 @@
 }
 
 /* Zone d'affichage du résultat */
-#display {
+#Display {
   background-color: #6eaa29; /* vert doux pour faire ressortir */
   color: #0f1115;
   font-size: 3rem;
@@ -81,4 +81,3 @@
   font-weight: bold;
   box-shadow: 0 6px 16px rgba(110, 170, 41, 0.15);
 }
-
