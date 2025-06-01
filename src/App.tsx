@@ -14,6 +14,7 @@ function App() {
 
     if(value === "AC") {
       // Reset the display
+      // reset display to 0
       setDisplayValue("0");
     }
     else if(value === "=") {
