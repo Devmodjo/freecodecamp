@@ -18,7 +18,7 @@
 }
 
 /* Zone d'affichage du résultat */
-#Display {
+#display {
   background-color: #6eaa29; /* vert doux pour faire ressortir */
   color: #0f1115;
   font-size: 3rem;
