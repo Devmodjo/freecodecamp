@@ -1,47 +1,99 @@
 
 import { useEffect, useState } from 'react';
-import './App.css'
-import type { DisplayProps, ButtonProps } from './interface/Interface';
 
+import type { DisplayProps, ButtonProps } from './interface/Interface';
+import './App.css';
 
 function App() {
-  // small calculator
+  const [displayValue, setDisplayValue] = useState("0");
+  const [expression, setExpression] = useState("");
+  const [evaluated, setEvaluated] = useState(false);
 
-  const  [displayValue, setDisplayValue] = useState("0"); // This would be managed by state in a real application
+  const isOperator = /[*/+\-]/;
+
   const handleButtonClick = (value: string) => {
-    // Handle button click logic here
+
     console.log(`${value} clicked`);
 
-    if(value === "AC") {
-      // Reset the display
+    if (value === "AC") {
       setDisplayValue("0");
+      setExpression("");
+      setEvaluated(false);
+      return;
     }
-    else if(value === "=") {
-      // evaluation de l'expression
-      try{
-        setDisplayValue(eval(displayValue).toString());
-        console.log("Result:", displayValue);
-      } catch(err){
+
+    if (value === "=") {
+      let exp = expression;
+
+      // Remove trailing operator if any
+      if (/[*/+\-]$/.test(exp)) exp = exp.slice(0, -1);
+
+      try {
+        const result = eval(exp);
+        const rounded = parseFloat(result.toFixed(12)).toString();
+        setDisplayValue(rounded);
+        setExpression(exp + "=" + rounded);
+        setEvaluated(true);
+      } catch (err) {
         console.error("Error evaluating expression:", err);
         setDisplayValue("Error");
+        setEvaluated(true);
       }
+      return;
     }
-    else {
 
-      if(displayValue === "0") {
-        setDisplayValue(value) // Replace 0 with the clicked value
+    if (value === ".") {
+      const parts = expression.split(/[\+\-\*/]/);
+      const lastNumber = parts[parts.length - 1];
+      if (lastNumber.includes(".")) return;
+    }
+
+    if (evaluated && /[0-9.]/.test(value)) {
+      setExpression(value === "." ? "0." : value);
+      setDisplayValue(value === "." ? "0." : value);
+      setEvaluated(false);
+      return;
+    }
+
+    if (evaluated && isOperator.test(value)) {
+      setExpression(displayValue + value);
+      setDisplayValue(value);
+      setEvaluated(false);
+      return;
+
+    }
+
+
+    if (isOperator.test(value)) {
+      if (expression === "" && value !== "-") return;
+      if (isOperator.test(expression.slice(-1))) {
+        if (value === "-" && expression.slice(-1) !== "-") {
+          setExpression(expression + value);
+        } else {
+          const replaced = expression.replace(/[*/+\-]+$/, value);
+          setExpression(replaced);
+        }
       } else {
-        let currentValue = displayValue + value; 
-        setDisplayValue(currentValue) // Append the clicked value
+        setExpression(expression + value);
       }
+      setDisplayValue(value);
+      return;
     }
 
-    
+    if (displayValue === "0" && value === "0") return;
+
+    if (expression === "" || displayValue === "0" || /[*/+\-=]/.test(displayValue)) {
+      setDisplayValue(value);
+    } else {
+      setDisplayValue(displayValue + value);
+    }
+
+    setExpression(expression + value);
   };
-  // Append the clicked value to the display
-  useEffect(()=>{
+
+  useEffect(() => {
     const displayElement = document.getElementById('Display');
-    if(displayElement) {
+    if (displayElement) {
       displayElement.textContent = displayValue;
     }
   }, [displayValue]);
@@ -53,7 +105,7 @@ function App() {
         <table>
           <tr>
             <td className='ButtonCell' colSpan={2}>
-              <Button value="AC" id="clear" onClick={()=>handleButtonClick("AC")} />
+              <Button value="AC" id="clear" onClick={() => handleButtonClick("AC")} />
             </td>
             <td className='ButtonCell'>
               <Button value="/" id="divide" onClick={() => handleButtonClick("/")} />
@@ -81,7 +133,7 @@ function App() {
               <Button value="4" id="four" onClick={() => handleButtonClick("4")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="5" id="five" onClick={() => handleButtonClick("5")}/>
+              <Button value="5" id="five" onClick={() => handleButtonClick("5")} />
             </td>
             <td className='ButtonCell'>
               <Button value="6" id="six" onClick={() => handleButtonClick("6")} />
@@ -115,25 +167,23 @@ function App() {
         </table>
       </div>
     </div>
-  )
+  );
 }
 
 function Display(props: DisplayProps) {
-  // Display component to show the value
-  return(
+  return (
     <div id='display'>
       {props.value}
     </div>
-  )
+  );
 }
 
-function Button(props:ButtonProps) {
-  // Button component to handle button clicks
+function Button(props: ButtonProps) {
   return (
     <button className="Button" onClick={props.onClick} id={props.id}>
       {props.value}
     </button>
-  )
+  );
 }
 
 
