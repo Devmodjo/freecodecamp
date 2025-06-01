@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 import type { DisplayProps, ButtonProps } from './interface/Interface';
 
@@ -7,31 +7,32 @@ import type { DisplayProps, ButtonProps } from './interface/Interface';
 function App() {
   // small calculator
 
-  let displayValue = "0"; // This would be managed by state in a real application
+  const  [displayValue, setDisplayValue] = useState("0"); // This would be managed by state in a real application
   const handleButtonClick = (value: string) => {
     // Handle button click logic here
     console.log(`${value} clicked`);
 
     if(value === "AC") {
       // Reset the display
-      displayValue = "0";
+      setDisplayValue("0");
     }
     else if(value === "=") {
       // evaluation de l'expression
       try{
-        displayValue = eval(displayValue).toString();
+        setDisplayValue(eval(displayValue).toString());
         console.log("Result:", displayValue);
       } catch(err){
         console.error("Error evaluating expression:", err);
-        displayValue = "Error";
+        setDisplayValue("Error");
       }
     }
     else {
 
       if(displayValue === "0") {
-        displayValue = value; // Replace 0 with the clicked value
+        setDisplayValue(value) // Replace 0 with the clicked value
       } else {
-        displayValue += value; // Append the clicked value
+        let currentValue = displayValue + value; 
+        setDisplayValue(currentValue) // Append the clicked value
       }
     }
 
@@ -52,7 +53,7 @@ function App() {
         <table>
           <tr>
             <td className='ButtonCell' colSpan={2}>
-              <Button value="AC" id="AC" onClick={()=>handleButtonClick("AC")} />
+              <Button value="AC" id="clear" onClick={()=>handleButtonClick("AC")} />
             </td>
             <td className='ButtonCell'>
               <Button value="/" id="divide" onClick={() => handleButtonClick("/")} />
@@ -63,13 +64,13 @@ function App() {
           </tr>
           <tr>
             <td className='ButtonCell'>
-              <Button value="7" id="7" onClick={() => handleButtonClick("7")} />
+              <Button value="7" id="seven" onClick={() => handleButtonClick("7")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="8" id="8" onClick={() => handleButtonClick("8")} />
+              <Button value="8" id="eight" onClick={() => handleButtonClick("8")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="9" id="9" onClick={() => handleButtonClick("9")} />
+              <Button value="9" id="nine" onClick={() => handleButtonClick("9")} />
             </td>
             <td className='ButtonCell'>
               <Button value="-" id="subtract" onClick={() => handleButtonClick("-")} />
@@ -77,13 +78,13 @@ function App() {
           </tr>
           <tr>
             <td className='ButtonCell'>
-              <Button value="4" id="4" onClick={() => handleButtonClick("4")} />
+              <Button value="4" id="four" onClick={() => handleButtonClick("4")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="5" id="5" onClick={() => handleButtonClick("5")}/>
+              <Button value="5" id="five" onClick={() => handleButtonClick("5")}/>
             </td>
             <td className='ButtonCell'>
-              <Button value="6" id="6" onClick={() => handleButtonClick("6")} />
+              <Button value="6" id="six" onClick={() => handleButtonClick("6")} />
             </td>
             <td className='ButtonCell'>
               <Button value="+" id="add" onClick={() => handleButtonClick("+")} />
@@ -91,13 +92,13 @@ function App() {
           </tr>
           <tr>
             <td className='ButtonCell'>
-              <Button value="1" id="1" onClick={() => handleButtonClick("1")} />
+              <Button value="1" id="one" onClick={() => handleButtonClick("1")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="2" id="2" onClick={() => handleButtonClick("2")} />
+              <Button value="2" id="two" onClick={() => handleButtonClick("2")} />
             </td>
             <td className='ButtonCell'>
-              <Button value="3" id="3" onClick={() => handleButtonClick("3")} />
+              <Button value="3" id="three" onClick={() => handleButtonClick("3")} />
             </td>
             <td className='ButtonCell' rowSpan={2}>
               <Button value="=" id="equals" onClick={() => handleButtonClick("=")} />
@@ -105,7 +106,7 @@ function App() {
           </tr>
           <tr>
             <td className='ButtonCell' colSpan={2}>
-              <Button value="0" id="0" onClick={() => handleButtonClick("0")} />
+              <Button value="0" id="zero" onClick={() => handleButtonClick("0")} />
             </td>
             <td className='ButtonCell'>
               <Button value="." id="decimal" onClick={() => handleButtonClick(".")} />
@@ -120,7 +121,7 @@ function App() {
 function Display(props: DisplayProps) {
   // Display component to show the value
   return(
-    <div id='Display'>
+    <div id='display'>
       {props.value}
     </div>
   )
