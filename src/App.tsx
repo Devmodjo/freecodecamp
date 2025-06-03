@@ -20,12 +20,12 @@ const drumSound = [
   {
     key: "A",
     sound: "Heater-4",
-    src: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-4.mp3",
+    src: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-4_1.mp3",
   },
   {
     key: "S",
     sound: "Clap",
-    src: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Clap.mp3",
+    src: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-6.mp3",
   },
   {
     key: "D",
@@ -81,13 +81,14 @@ function App() {
         id="drum-machine"
         className="flex flex-col items-center min-w-2xs justify-center h-30 bg-gray-100 shadow-2xs rounded-md"
       >
-        <h1 className="p-2.5">Dum's Machine MV</h1>
+        <h1 className="p-2.5">Drum's Machine MV</h1>
         <div id="display" className="m-2 w-full p-5 bg-amber-100 mb-4">{displaySound}</div>
         <div id="element" className="w-full p-5 bg-gray-200 rounded-md">
           <div className="grid grid-cols-3 gap-4">
             {drumSound.map((pad) => (
               <button
                 key={pad.key}
+                id={pad.sound}
                 className="drum-pad p-4 bg-blue-500 text-white rounded hover:bg-blue-600"
                 onClick={() => playSound(pad.key, pad.sound)}>
                 {pad.key}
