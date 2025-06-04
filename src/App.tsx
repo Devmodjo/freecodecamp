@@ -62,7 +62,7 @@ function App() {
     setIsRunning(false);
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      audioRef.current.currentTime = 0; 
     }
   };
 
