@@ -31,11 +31,11 @@
 
 | Projet                     | Description                                                                                   | Démo en ligne / Lien |
 |----------------------------|-----------------------------------------------------------------------------------------------|-----------------------|
-| 🧮 **Calculatrice JS**      | Une calculatrice fonctionnelle respectant les règles des opérations mathématiques.             | [Voir le projet](#)   |
-| 📝 **Markdown Previewer**  | Un aperçu en temps réel d’un texte en markdown converti en HTML.                             | [Voir le projet](#)   |
-| 🥁 **Drum Machine**        | Une machine à sons avec activation par clic ou clavier.                                      | [Voir le projet](#)   |
+| 🧮 **Calculatrice JS**      | Une calculatrice fonctionnelle respectant les règles des opérations mathématiques.             | [Voir le projet](https://freecodecampcalculatricejs.vercel.app/)   |
+| 📝 **Markdown Previewer**  | Un aperçu en temps réel d’un texte en markdown converti en HTML.                             | [Voir le projet](https://freecodecampmarkdownpreviewjs.vercel.app/)   |
+| 🥁 **Drum Machine**        | Une machine à sons avec activation par clic ou clavier.                                      | [Voir le projet](https://freecodecampdrummachinejs.vercel.app/)   |
 | ⏱ **Pomodoro Clock 25+5** | Un minuteur Pomodoro avec gestion des sessions de travail et de pause.                       | [Voir le projet](#)   |
-| ✨ **Citation Aléatoire**  | Une application générant des citations aléatoires inspirantes, avec couleurs dynamiques.     | [Voir le projet](#)   |
+| ✨ **Citation Aléatoire**  | Une application générant des citations aléatoires inspirantes, avec couleurs dynamiques.     | [Voir le projet](https://freecodecamprandomcitationjs.vercel.app/)   |
 
 ---
 
