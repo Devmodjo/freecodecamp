@@ -79,8 +79,8 @@ Chaque dossier contient :
 
 > Pour toute question ou suggestion :
 > 
-> ✉️ **Email** : [ton-email@example.com]  
-> 🔗 **Portfolio** : [ton-site.com]  
+> ✉️ **Email** : [yvankamsu88@gmail.com]  
+> 🔗 **Portfolio** : [https://modjovictor.vercel.app]  
 > 🐦 **Twitter** : [@tonpseudo]
 
 ---
