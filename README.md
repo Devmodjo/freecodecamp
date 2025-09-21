@@ -80,8 +80,8 @@ Chaque dossier contient :
 > Pour toute question ou suggestion :
 > 
 > ✉️ **Email** : [yvankamsu88@gmail.com]  
-> 🔗 **Portfolio** : [https://modjovictor.vercel.app]  
-> 🐦 **Twitter** : [@tonpseudo]
+> 🔗 **Portfolio** : [https://modjovictor.vercel.app/contact]  
+> 🐦 **Twitter** : [@modjovictor]
 
 ---
 
