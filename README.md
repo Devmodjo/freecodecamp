@@ -23,7 +23,7 @@
 - ⚛️ **React.js**
 - 🟦 **TypeScript**
 - 🎨 **TailwindCSS** (la plupart des projets)
-- 🔧 Vite / Create React App (selon le projet)
+- 🔧 Vite
 
 ---
 
